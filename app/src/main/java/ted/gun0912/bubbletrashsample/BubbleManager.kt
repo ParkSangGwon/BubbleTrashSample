@@ -16,8 +16,9 @@ object BubbleManager {
 
     private const val TRASH_BOUND = 0.25
 
-    private val windowManager: WindowManager =
+    private val windowManager: WindowManager by lazy {
         SampleApplication.instance.getSystemService(Context.WINDOW_SERVICE) as WindowManager
+    }
 
     private val viewList: MutableList<View> = ArrayList()
     private lateinit var bubbleTrashLayout: BubbleTrashLayout
