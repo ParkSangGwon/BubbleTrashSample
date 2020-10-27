@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.graphics.PixelFormat
 import android.os.Build
+import android.util.Log
 import android.view.*
 import androidx.annotation.LayoutRes
 import androidx.core.view.doOnNextLayout
@@ -79,7 +80,10 @@ object BubbleManager {
 
     fun onDestroy() {
         for (view in viewList) {
-            windowManager.removeView(view)
+            if (view.isAttachedToWindow) {
+                windowManager.removeView(view)
+            }
+
         }
     }
 
